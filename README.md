@@ -12,7 +12,7 @@ http://www.nicosearch.info/rank_sort/
 ## 使い方
 http://www.nicovideo.jp/watch/sm9
 
-1. URLにあるsm9の_9_のIDを検索IDに入力
+1. 上記のURLの例としてsm9の_9_のIDを検索IDに入力
 2. 検索する総数を5~100の間で入力
 3. 検索ボタンで検索
 
