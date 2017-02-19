@@ -37,6 +37,7 @@ function video_data($xml_videoID, $sort_value_after, $sort_value_before){
 
   $sort_kind = video_IDsearch($xml_videoID);
     if($sort_kind == 1){
+      echo "動画が存在しません";
         die();
     }
 
@@ -161,7 +162,7 @@ function video_detailinfo($sort_ID_before, $sort_kind_before, $sort_ID_after, $s
 
     video_output($title, $ID, $view, $comment, $mylist, $adv, $total, $sort_value_before, $sort_value_after);
     video_rank($title, $ID, $view, $comment, $mylist, $adv, $total, $sort_value_before, $sort_value_after);
-    video_total($view, $comment, $mylist, $adv, $total, $sort_value_before, $sort_value_after);
+    video_grandtotal($view, $comment, $mylist, $adv, $total, $sort_value_before, $sort_value_after);
 
 }
 /*
@@ -239,7 +240,21 @@ function median($arr) {
 }
 */
 
-function video_total($view, $comment, $mylist, $adv, $total, $sort_value_before, $sort_value_after){
+function video_abg($view_total, $comment_total, $mylist_total, $adv_total, $total_total, $sort_value_before, $sort_value_after){
+
+  $view_abg = floor($view_total / ($sort_value_before + $sort_value_after + 1));
+  $comment_abg = floor($comment_total / ($sort_value_before + $sort_value_after + 1));
+  $mylist_abg = floor($mylist_total / ($sort_value_before + $sort_value_after + 1));
+  $adv_abg = floor($adv_total / ($sort_value_before + $sort_value_after + 1));
+  $total_abg = floor($total_total / ($sort_value_before + $sort_value_after + 1));
+
+  //echo $view_abg ." ". $comment_abg ." ". $mylist_abg ." ". $adv_abg ." ". $total_abg;
+
+  video_grandtotal_output($view_total, $comment_total, $mylist_total, $adv_total, $total_total, $view_abg, $comment_abg, $mylist_abg, $adv_abg, $total_abg, $sort_value_before, $sort_value_after);
+
+}
+
+function video_grandtotal($view, $comment, $mylist, $adv, $total, $sort_value_before, $sort_value_after){
 
   $view_total = 0;
   $comment_total = 0;
@@ -299,16 +314,18 @@ function video_total($view, $comment, $mylist, $adv, $total, $sort_value_before,
       $view_sort[$sort_value_before + $i] = $view[1][$i];
     }
     $view_sort[$sort_value_before + $sort_value_after] = $view[2][0];
+
 /*
   $view_median = median($view_sort, $sort_value_before, $sort_value_after);
   echo "<br>".$view_median."<br>";
 */
-
+    video_abg($view_total, $comment_total, $mylist_total, $adv_total, $total_total, $sort_value_before, $sort_value_after);
 /*
   for($i = 0; $i <= 100; $i++){
     echo $i." ".$view_sort[$i]."<br>";
   }
 */
+
 }
 
 
@@ -411,6 +428,7 @@ if($total[1][8] > $total[1][2]){
         }
     }
   }
+
   video_rank_output($rank);
 /*
   echo "<br>".$rank[0][6]."<br>".$rank[1][6]."<br>".$rank[2][6]."<br>".$rank[3][6]."<br>".$rank[4][6]."<br>".

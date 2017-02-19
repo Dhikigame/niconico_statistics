@@ -104,4 +104,38 @@ function video_rank_output($rank){
   echo  "</table>";
 }
 
+function video_grandtotal_output($view_total, $comment_total, $mylist_total, $adv_total, $total_total, $view_abg, $comment_abg, $mylist_abg, $adv_abg, $total_abg, $sort_value_before, $sort_value_after){
+
+  $video_total = $sort_value_before + $sort_value_after + 1;
+
+  echo "<p></p>";
+  echo "<table border=”1″>
+          <caption>全".$video_total."動画の総計</caption>
+          <tr>
+            <th></th>
+            <th>再生数</th>
+            <th>コメント</th>
+            <th>マイリスト</th>
+            <th>宣伝ポイント</th>
+            <th>総合ポイント</th>
+          </tr>";
+    echo  "<tr>
+            <td>平均値</td>
+            <td>".$view_abg."</td>
+            <td>".$comment_abg."</td>
+            <td>".$mylist_abg."</td>
+            <td>".$adv_abg."</td>
+            <td>".$total_abg."</td>
+          </tr>";
+    echo  "<tr>
+              <td>合計値</td>
+              <td>".$view_total."</td>
+              <td>".$comment_total."</td>
+              <td>".$mylist_total."</td>
+              <td>".$adv_total."</td>
+              <td>".$total_total."</td>
+          </tr>";
+  echo  "</table>";
+}
+
 ?>
