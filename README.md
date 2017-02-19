@@ -4,6 +4,8 @@
 # 使い方
 http://www.nicovideo.jp/watch/_sm9_
 
+_sm9_
+
 1. sm9の9を検索IDに入力
 2. 検索する総数を5~10の間で入力
 3. 検索ボタンで検索
