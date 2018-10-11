@@ -104,7 +104,7 @@ function video_rank_output($rank){
   echo  "</table>";
 }
 
-function video_grandtotal_output($view_total, $comment_total, $mylist_total, $adv_total, $total_total, $view_abg, $comment_abg, $mylist_abg, $adv_abg, $total_abg, $sort_value_before, $sort_value_after){
+function video_grandtotal_output($view_total, $comment_total, $mylist_total, $adv_total, $total_total, $view_abg, $comment_abg, $mylist_abg, $adv_abg, $total_abg, $sort_value_before, $sort_value_after, $median){
 
   $video_total = $sort_value_before + $sort_value_after + 1;
 
@@ -119,6 +119,14 @@ function video_grandtotal_output($view_total, $comment_total, $mylist_total, $ad
             <th>宣伝ポイント</th>
             <th>総合ポイント</th>
           </tr>";
+    echo  "<tr>
+          <td>中央値</td>
+          <td>".$median[0]."</td>
+          <td>".$median[1]."</td>
+          <td>".$median[2]."</td>
+          <td>".$median[3]."</td>
+          <td>".$median[4]."</td>
+        </tr>";
     echo  "<tr>
             <td>平均値</td>
             <td>".$view_abg."</td>
