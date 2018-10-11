@@ -165,53 +165,7 @@ function video_detailinfo($sort_ID_before, $sort_kind_before, $sort_ID_after, $s
     video_grandtotal($view, $comment, $mylist, $adv, $total, $sort_value_before, $sort_value_after);
 
 }
-/*
-function bubble_sort($array)
-{
-    // 要素数回繰り返し
-    for($i = 0; $i < count($array); $i++)
-    {
-        // 要素数-1回繰り返し
-        for($n = 1; $n < count($array); $n++)
-        {
-            // 隣接要素を比較し大小が逆なら入替える
-            if($array[$n-1] > $array[$n])
-            {
-                $temp = $array[$n];
-                $array[$n] = $array[$n-1];
-                $array[$n-1] = $temp;
-            }
-        }
-    }
-    return $array;
-}
-*/
-/*
-     中央値を求める関数
-*/
-/*
-function median($view_sort, $sort_value_before, $sort_value_after){
-  echo $sort_value_before;
-  // 要素数回繰り返し
-  for($i = 0; $i < $sort_value_before + $sort_value_after; $i++)
-  {
-      // 要素数-1回繰り返し
-      for($n = 1; $n < $sort_value_before + $sort_value_after; $n++)
-      {
-          // 隣接要素を比較し大小が逆なら入替える
-          if($view_sort[$n-1] > $view_sort[$n])
-          {
-              $temp = $view_sort[$n];
-              $view_sort[$n] = $view_sort[$n-1];
-              $view_sort[$n-1] = $temp;
-          }
-      }
-  }
-  for($i = 0; $i < $sort_value_before + $sort_value_after; $i++){
-    echo $i." ".$view_sort[$i]."<br>";
-  }
-}
-*/
+
 /*  中央値を求める  */
 function median($view_sort, $comment_sort, $mylist_sort, $adv_sort, $total_sort, $video_num){
 
