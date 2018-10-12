@@ -328,7 +328,7 @@ function video_grandtotal($view, $comment, $mylist, $adv, $total, $sort_value_be
     $view_sort[$sort_value_before + $sort_value_after] = $view[2][0];
 
   //動画の総数から中央値求める
-  $video_num = $sort_value_before + $sort_value_after + 1;
+  $video_num = $sort_value_before + $sort_value_after + 2;
   $median = median($view_sort, $comment_sort, $mylist_sort, $adv_sort, $total_sort, $video_num);
   //echo "<br>".$view_median."<br>";
 
