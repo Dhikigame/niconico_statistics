@@ -30,7 +30,11 @@ $sort_value_after = isset($_GET['num']) ? $_GET['num'] : null; //GETでnumを受
     die();
   }
   if($sort_value_after <= 4){
-    echo "検索総数は5以上100以下でお願いします";
+    echo "検索総数は5以上2000以下でお願いします";
+    die();
+  }
+  if($sort_value_after > 2000){
+    echo "検索総数は5以上2000以下でお願いします";
     die();
   }
 $sort_value_before = $sort_value_after;

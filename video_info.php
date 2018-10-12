@@ -169,65 +169,93 @@ function video_detailinfo($sort_ID_before, $sort_kind_before, $sort_ID_after, $s
 /*  中央値を求める  */
 function median($view_sort, $comment_sort, $mylist_sort, $adv_sort, $total_sort, $video_num){
 
+  $median_num = floor($video_num / 2);
+
+  //配列ごとの値がString型なのでint型に変換
+  for($i = 0; $i <= $video_num; $i++){
+    $view_sort[$i] = (int)$view_sort[$i];
+    $comment_sort[$i] = (int)$comment_sort[$i];
+    $mylist_sort[$i] = (int)$mylist_sort[$i];
+    $adv_sort[$i] = (int)$adv_sort[$i];
+    $total_sort[$i] = (int)$total_sort[$i];
+  }
+
+
   //再生数降順ソート
-  for ($j = 1; $j < $video_num;$j++) {
-    for ($i = $j; $i < $video_num; $i++) {
-        if ($view_sort[$i - 1] < $view_sort[$i]) {
-            $tmp = $view_sort[$i];
-            $view_sort[$i] = $view_sort[$i - 1];
-            $view_sort[$i - 1] = $tmp;
+  for ($i = 0; $i < $video_num; $i++) {
+    for ($j = 0; $j < $video_num - $i; $j++) {
+        if ($view_sort[$j] < $view_sort[$j + 1]) {
+            $tmp = $view_sort[$j];
+            $view_sort[$j] = $view_sort[$j + 1];
+            $view_sort[$j + 1] = $tmp;
         }
     }
   }
-  $med[0] = $view_sort[$video_num / 2];//再生数中央値
+  $med[0] = $view_sort[$median_num];//再生数中央値
+  echo "<br>【再生数 降順ソート】<br>";
+  for($i = 0; $i <= $video_num; $i++){
+    echo $view_sort[$i]." ";
+  }
 
   //コメント数降順ソート
-  for ($j = 1; $j < $video_num;$j++) {
-    for ($i = $j; $i < $video_num; $i++) {
-        if ($comment_sort[$i - 1] < $comment_sort[$i]) {
-            $tmp = $comment_sort[$i];
-            $comment_sort[$i] = $comment_sort[$i - 1];
-            $comment_sort[$i - 1] = $tmp;
+  for ($i = 0; $i < $video_num; $i++) {
+    for ($j = 0; $j < $video_num - $i; $j++) {
+        if ($comment_sort[$j] < $comment_sort[$j + 1]) {
+            $tmp = $comment_sort[$j];
+            $comment_sort[$j] = $comment_sort[$j + 1];
+            $comment_sort[$j + 1] = $tmp;
         }
     }
   }
-  $med[1] = $comment_sort[$video_num / 2];//コメント数中央値
+  $med[1] = $comment_sort[$median_num];//コメント数中央値
+  echo "<br>【コメント数 降順ソート】<br>";
+  for($i = 0; $i <= $video_num; $i++){
+    echo $comment_sort[$i]." ";
+  }
 
   //マイリスト数降順ソート
-  for ($j = 1; $j < $video_num;$j++) {
-    for ($i = $j; $i < $video_num; $i++) {
-        if ($mylist_sort[$i - 1] < $mylist_sort[$i]) {
-            $tmp = $mylist_sort[$i];
-            $mylist_sort[$i] = $mylist_sort[$i - 1];
-            $mylist_sort[$i - 1] = $tmp;
+  for ($i = 0; $i < $video_num; $i++) {
+    for ($j = 0; $j < $video_num - $i; $j++) {
+        if ($mylist_sort[$j] < $mylist_sort[$j + 1]) {
+            $tmp = $mylist_sort[$j];
+            $mylist_sort[$j] = $mylist_sort[$j + 1];
+            $mylist_sort[$j + 1] = $tmp;
         }
     }
   }
-  $med[2] = $mylist_sort[$video_num / 2];//マイリスト数中央値
+  $med[2] = $mylist_sort[$median_num];//マイリスト数中央値
+  echo "<br>【マイリスト数 降順ソート】<br>";
+  for($i = 0; $i <= $video_num; $i++){
+    echo $mylist_sort[$i]." ";
+  }
 
   //宣伝ポイント数降順ソート
-  for ($j = 1; $j < $video_num;$j++) {
-    for ($i = $j; $i < $video_num; $i++) {
-        if ($adv_sort[$i - 1] < $adv_sort[$i]) {
-            $tmp = $adv_sort[$i];
-            $adv_sort[$i] = $adv_sort[$i - 1];
-            $adv_sort[$i - 1] = $tmp;
+  for ($i = 0; $i < $video_num; $i++) {
+    for ($j = 0; $j < $video_num - $i; $j++) {
+        if ($adv_sort[$j] < $adv_sort[$j + 1]) {
+            $tmp = $adv_sort[$j];
+            $adv_sort[$j] = $adv_sort[$j + 1];
+            $adv_sort[$j + 1] = $tmp;
         }
     }
   }
-  $med[3] = $adv_sort[$video_num / 2];//宣伝ポイント数中央値
+  $med[3] = $adv_sort[$median_num];//宣伝ポイント数中央値
 
   //総合ポイント降順ソート
-  for ($j = 1; $j < $video_num;$j++) {
-    for ($i = $j; $i < $video_num; $i++) {
-        if ($total_sort[$i - 1] < $total_sort[$i]) {
-            $tmp = $total_sort[$i];
-            $total_sort[$i] = $total_sort[$i - 1];
-            $total_sort[$i - 1] = $tmp;
+  for ($i = 0; $i < $video_num; $i++) {
+    for ($j = 0; $j < $video_num - $i; $j++) {
+        if ($total_sort[$j] < $total_sort[$j + 1]) {
+            $tmp = $total_sort[$j];
+            $total_sort[$j] = $total_sort[$j + 1];
+            $total_sort[$j + 1] = $tmp;
         }
     }
   }
-  $med[4] = $total_sort[$video_num / 2];//総合ポイント中央値
+  $med[4] = $total_sort[$median_num];//総合ポイント中央値
+  echo "<br>【総合ポイント数 降順ソート】<br>";
+  for($i = 0; $i <= $video_num; $i++){
+    echo $total_sort[$i]." ";
+  }
 
   return $med;
 
@@ -280,7 +308,7 @@ function video_grandtotal($view, $comment, $mylist, $adv, $total, $sort_value_be
         $comment_total += $comment[$i + 2][0];
         $comment_sort[$sort_value_after + $sort_value_before] = $comment[$i + 2][0];
 
-      //マイリストの合計求める
+        //マイリストの合計求める
       for($j = 0; $j < $sort_value_before; $j++){
         $mylist_total += $mylist[$i][$j];
         $mylist_sort[$j] = $mylist[$i][$j];
@@ -302,7 +330,7 @@ function video_grandtotal($view, $comment, $mylist, $adv, $total, $sort_value_be
         $adv_sort[$j + $sort_value_before] = $adv[$i + 1][$j];
       }
         $adv_total += $adv[$i + 2][0];
-        $adv_sort[$sort_value_after + $sort_value_before] = $adv[$i + 2][$j];
+        $adv_sort[$sort_value_after + $sort_value_before] = $adv[$i + 2][0];
 
       //総合ポイントの合計求める
       for($j = 0; $j < $sort_value_before; $j++){
@@ -314,9 +342,8 @@ function video_grandtotal($view, $comment, $mylist, $adv, $total, $sort_value_be
         $total_sort[$j + $sort_value_before] = $total[$i + 1][$j];
       }
         $total_total += $total[$i + 2][0];
-        $total_sort[$sort_value_after + $sort_value_before] = $total[$i + 2][$j];
+        $total_sort[$sort_value_after + $sort_value_before] = $total[$i + 2][0];
 
-  //echo "<br>".$view_total." ".$comment_total." ".$mylist_total." ".$adv_total." ".$total_total;
 
     //再生数の平均値と中央値を求める関数に引数として渡すため一次配列にする
     for($i = 0; $i < $sort_value_before; $i++){
@@ -328,7 +355,7 @@ function video_grandtotal($view, $comment, $mylist, $adv, $total, $sort_value_be
     $view_sort[$sort_value_before + $sort_value_after] = $view[2][0];
 
   //動画の総数から中央値求める
-  $video_num = $sort_value_before + $sort_value_after + 2;
+  $video_num = $sort_value_before + $sort_value_after;
   $median = median($view_sort, $comment_sort, $mylist_sort, $adv_sort, $total_sort, $video_num);
   //echo "<br>".$view_median."<br>";
 
