@@ -1,8 +1,14 @@
+<?php
+require('video_info.php');
+$xml_videoID = isset($_GET['id']) ? $_GET['id'] : null; //GETでIDを受け取る
+$sort_value_after = isset($_GET['num']) ? $_GET['num'] : null; //GETでnumを受け取る
+?>
+
 <!DOCTYPE html>
 <html lang="ja">
   <head>
     <meta charset="utf-8">
-      <title>ニコニコ動画検索info　統計データ</title>
+      <title>ニコニコ動画検索info　統計データ - <?php echo video_IDsearch($xml_videoID) . $xml_videoID; ?></title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <style type="text/css">
             p{
@@ -20,10 +26,6 @@
       <center>
   <a name="up"></a>
 <?php
-require('video_info.php');
-
-$xml_videoID = isset($_GET['id']) ? $_GET['id'] : null; //GETでIDを受け取る
-$sort_value_after = isset($_GET['num']) ? $_GET['num'] : null; //GETでnumを受け取る
 
   if($xml_videoID < 1000){
     echo "動画IDは1000以上でお願いします";
