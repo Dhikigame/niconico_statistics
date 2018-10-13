@@ -192,10 +192,6 @@ function median($view_sort, $comment_sort, $mylist_sort, $adv_sort, $total_sort,
     }
   }
   $med[0] = $view_sort[$median_num];//再生数中央値
-  echo "<br>【再生数 降順ソート】<br>";
-  for($i = 0; $i <= $video_num; $i++){
-    echo $view_sort[$i]." ";
-  }
 
   //コメント数降順ソート
   for ($i = 0; $i < $video_num; $i++) {
@@ -208,10 +204,6 @@ function median($view_sort, $comment_sort, $mylist_sort, $adv_sort, $total_sort,
     }
   }
   $med[1] = $comment_sort[$median_num];//コメント数中央値
-  echo "<br>【コメント数 降順ソート】<br>";
-  for($i = 0; $i <= $video_num; $i++){
-    echo $comment_sort[$i]." ";
-  }
 
   //マイリスト数降順ソート
   for ($i = 0; $i < $video_num; $i++) {
@@ -224,10 +216,6 @@ function median($view_sort, $comment_sort, $mylist_sort, $adv_sort, $total_sort,
     }
   }
   $med[2] = $mylist_sort[$median_num];//マイリスト数中央値
-  echo "<br>【マイリスト数 降順ソート】<br>";
-  for($i = 0; $i <= $video_num; $i++){
-    echo $mylist_sort[$i]." ";
-  }
 
   //宣伝ポイント数降順ソート
   for ($i = 0; $i < $video_num; $i++) {
@@ -252,10 +240,37 @@ function median($view_sort, $comment_sort, $mylist_sort, $adv_sort, $total_sort,
     }
   }
   $med[4] = $total_sort[$median_num];//総合ポイント中央値
+
+  
+  echo "<br>【再生数 降順ソート】<br>";
+  for($i = 0; $i <= $video_num; $i++){
+    echo "(".($i + 1)."位)".$view_sort[$i]." ";
+    if(($i + 1) % 10 === 0){
+      echo "<br>";
+    }
+  }
+  echo "<br>【コメント数 降順ソート】<br>";
+  for($i = 0; $i <= $video_num; $i++){
+    echo "(".($i + 1)."位)".$comment_sort[$i]." ";
+    if(($i + 1) % 10 === 0){
+      echo "<br>";
+    }
+  }
+  echo "<br>【マイリスト数 降順ソート】<br>";
+  for($i = 0; $i <= $video_num; $i++){
+    echo "(".($i + 1)."位)".$mylist_sort[$i]." ";
+    if(($i + 1) % 10 === 0){
+      echo "<br>";
+    }
+  }
   echo "<br>【総合ポイント数 降順ソート】<br>";
   for($i = 0; $i <= $video_num; $i++){
-    echo $total_sort[$i]." ";
+    echo "(".($i + 1)."位)".$total_sort[$i]." ";
+    if(($i + 1) % 10 === 0){
+      echo "<br>";
+    }
   }
+
 
   return $med;
 
