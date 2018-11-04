@@ -241,29 +241,32 @@ function median($view_sort, $comment_sort, $mylist_sort, $adv_sort, $total_sort,
   }
   $med[4] = $total_sort[$median_num];//総合ポイント中央値
 
-  
-  echo "<br>【再生数 降順ソート】<br>";
+  echo "<a name='view_video'></a>";
+  echo "<br>【再生数 降順ソート】<a href='#up'>上へ戻る</a><br>";
   for($i = 0; $i <= $video_num; $i++){
     echo "(".($i + 1)."位)".$view_sort[$i]." ";
     if(($i + 1) % 10 === 0){
       echo "<br>";
     }
   }
-  echo "<br>【コメント数 降順ソート】<br>";
+  echo "<a name='comment_video'></a>";
+  echo "<br>【コメント数 降順ソート】<a href='#up'>上へ戻る</a><br>";
   for($i = 0; $i <= $video_num; $i++){
     echo "(".($i + 1)."位)".$comment_sort[$i]." ";
     if(($i + 1) % 10 === 0){
       echo "<br>";
     }
   }
-  echo "<br>【マイリスト数 降順ソート】<br>";
+  echo "<a name='mylist_video'></a>";
+  echo "<br>【マイリスト数 降順ソート】<a href='#up'>上へ戻る</a><br>";
   for($i = 0; $i <= $video_num; $i++){
     echo "(".($i + 1)."位)".$mylist_sort[$i]." ";
     if(($i + 1) % 10 === 0){
       echo "<br>";
     }
   }
-  echo "<br>【総合ポイント数 降順ソート】<br>";
+  echo "<a name='total_video'></a>";
+  echo "<br>【総合ポイント数 降順ソート】<a href='#up'>上へ戻る</a><br>";
   for($i = 0; $i <= $video_num; $i++){
     echo "(".($i + 1)."位)".$total_sort[$i]." ";
     if(($i + 1) % 10 === 0){
